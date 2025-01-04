@@ -4,6 +4,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useWeb3Modal } from '@web3modal/wagmi/react'
 import { useAccount } from 'wagmi'
 import { Search, MapPin } from 'lucide-react';
+import { AiChat } from "@/components/AiChat";
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -47,6 +48,14 @@ const Index = () => {
               </Button>
             </div>
           </div>
+        </section>
+
+        {/* AI Chat Section */}
+        <section className="mb-12">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-200">
+            AI Assistant
+          </h2>
+          <AiChat />
         </section>
 
         {/* Featured Section */}

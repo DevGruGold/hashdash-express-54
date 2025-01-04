@@ -21,7 +21,7 @@ const Index = () => {
             </h1>
             <Button 
               variant="outline" 
-              className="bg-sidebar/50 backdrop-blur-sm border-purple-500/20 hover:bg-sidebar/70 transition-all duration-300"
+              className="bg-white/10 backdrop-blur-sm border-purple-500/20 hover:bg-white/20 text-white transition-all duration-300"
               onClick={() => open()}
             >
               {isConnected ? `${address?.slice(0, 6)}...${address?.slice(-4)}` : 'Connect Wallet'}
@@ -56,7 +56,7 @@ const Index = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
-              <Card key={i} className="group bg-sidebar/50 backdrop-blur-sm border-purple-500/20 hover:bg-sidebar/70 transition-all duration-300">
+              <Card key={i} className="group bg-white/5 backdrop-blur-sm border-purple-500/20 hover:bg-white/10 transition-all duration-300">
                 <CardHeader>
                   <div className="h-48 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 mb-4"></div>
                   <CardTitle className="text-xl text-gray-200 group-hover:text-purple-400 transition-colors">
@@ -84,7 +84,7 @@ const Index = () => {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {['Pizza', 'Sushi', 'Burgers', 'Desserts'].map((category) => (
-              <Card key={category} className="group bg-sidebar/50 backdrop-blur-sm border-purple-500/20 hover:bg-sidebar/70 transition-all duration-300 cursor-pointer">
+              <Card key={category} className="group bg-white/5 backdrop-blur-sm border-purple-500/20 hover:bg-white/10 transition-all duration-300 cursor-pointer">
                 <CardContent className="p-6">
                   <div className="flex flex-col items-center">
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 mb-3 group-hover:scale-110 transition-transform"></div>

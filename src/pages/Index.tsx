@@ -1,9 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useWeb3Modal } from '@web3modal/wagmi/react'
+import { useAccount } from 'wagmi'
 
 const Index = () => {
   const isMobile = useIsMobile();
+  const { open } = useWeb3Modal()
+  const { address, isConnected } = useAccount()
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1A1F2C] to-[#2C1F3C]">
@@ -17,8 +21,9 @@ const Index = () => {
             <Button 
               variant="outline" 
               className="bg-sidebar/50 backdrop-blur-sm border-purple-500/20 hover:bg-sidebar/70"
+              onClick={() => open()}
             >
-              Connect Wallet
+              {isConnected ? `${address?.slice(0, 6)}...${address?.slice(-4)}` : 'Connect Wallet'}
             </Button>
           </div>
         </header>

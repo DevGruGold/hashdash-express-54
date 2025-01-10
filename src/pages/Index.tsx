@@ -18,7 +18,7 @@ const Index = () => {
         <header className="mb-12">
           <div className="flex justify-between items-center">
             <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-300 to-purple-300 bg-clip-text text-transparent">
-              HashDash
+              DinerDapp
             </h1>
             <Button 
               variant="outline" 

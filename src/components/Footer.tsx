@@ -10,7 +10,7 @@ export const Footer = () => {
   };
   
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("Hello! I'm interested in your services.");
+    const message = encodeURIComponent("Hello! I'm interested in using DinerDapp for my restaurant.");
     window.open(`https://wa.me/${whatsapp}?text=${message}`, '_blank');
   };
 
@@ -56,7 +56,7 @@ export const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-xl font-semibold text-gray-200 mb-4">About HashDash</h3>
+            <h3 className="text-xl font-semibold text-gray-200 mb-4">About DinerDapp</h3>
             <p className="text-gray-300">
               Revolutionizing food delivery with blockchain technology. Order your favorite meals securely and efficiently.
             </p>
@@ -64,7 +64,7 @@ export const Footer = () => {
         </div>
         
         <div className="mt-8 pt-8 border-t border-purple-500/20 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} HashDash. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} DinerDapp. All rights reserved.</p>
         </div>
       </div>
     </footer>

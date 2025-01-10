@@ -4,11 +4,11 @@ const About = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1A1F2C] to-[#2C1F3C]">
       <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-200 mb-8">About HashDash</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-200 mb-8">About DinerDapp</h1>
         
         <div className="space-y-6 text-gray-300">
           <p>
-            HashDash is revolutionizing the food delivery industry by leveraging blockchain technology
+            DinerDapp is revolutionizing the food delivery industry by leveraging blockchain technology
             to create a secure, transparent, and efficient platform for both customers and restaurants.
           </p>
           

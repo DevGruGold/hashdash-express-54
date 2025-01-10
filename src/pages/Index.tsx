@@ -4,7 +4,14 @@ import { useAccount } from 'wagmi'
 import { Search, MapPin } from 'lucide-react';
 import { Footer } from "@/components/Footer";
 import { RestaurantCard } from "@/components/RestaurantCard";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 
 const MOCK_RESTAURANTS = [
   {

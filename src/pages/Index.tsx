@@ -1,13 +1,36 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { useWeb3Modal } from '@web3modal/wagmi/react'
 import { useAccount } from 'wagmi'
 import { Search, MapPin } from 'lucide-react';
 import { Footer } from "@/components/Footer";
+import { RestaurantCard } from "@/components/RestaurantCard";
+
+// Mock data - In a real app, this would come from an API
+const MOCK_RESTAURANTS = [
+  {
+    id: "1",
+    name: "Burger Palace",
+    rating: 4.8,
+    deliveryTime: "20-30 min",
+    cuisine: "American",
+  },
+  {
+    id: "2",
+    name: "Pizza Paradise",
+    rating: 4.6,
+    deliveryTime: "25-35 min",
+    cuisine: "Italian",
+  },
+  {
+    id: "3",
+    name: "Sushi Supreme",
+    rating: 4.9,
+    deliveryTime: "30-40 min",
+    cuisine: "Japanese",
+  },
+];
 
 const Index = () => {
-  const isMobile = useIsMobile();
   const { open } = useWeb3Modal()
   const { address, isConnected } = useAccount()
 
@@ -56,24 +79,8 @@ const Index = () => {
             Featured Restaurants
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <Card key={i} className="group bg-white/5 backdrop-blur-sm border-purple-500/20 hover:bg-white/10 transition-all duration-300">
-                <CardHeader>
-                  <div className="h-48 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 mb-4"></div>
-                  <CardTitle className="text-xl text-gray-200 group-hover:text-purple-400 transition-colors">
-                    Restaurant {i}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-400 mb-4">
-                    Delicious meals delivered to your wallet
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-purple-400">⭐ 4.8 (120+)</span>
-                    <span className="text-sm text-gray-400">20-30 min</span>
-                  </div>
-                </CardContent>
-              </Card>
+            {MOCK_RESTAURANTS.map((restaurant) => (
+              <RestaurantCard key={restaurant.id} {...restaurant} />
             ))}
           </div>
         </section>

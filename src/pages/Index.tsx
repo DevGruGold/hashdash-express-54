@@ -4,6 +4,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useWeb3Modal } from '@web3modal/wagmi/react'
 import { useAccount } from 'wagmi'
 import { Search, MapPin } from 'lucide-react';
+import { Footer } from "@/components/Footer";
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -96,6 +97,7 @@ const Index = () => {
           </div>
         </section>
       </div>
+      <Footer />
     </div>
   );
 };

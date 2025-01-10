@@ -7,6 +7,9 @@ import { createWeb3Modal } from '@web3modal/wagmi/react'
 import { WagmiProvider } from 'wagmi'
 import { config, projectId } from './lib/web3config'
 import Index from "./pages/Index";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Terms from "./pages/Terms";
 
 // Initialize Web3Modal
 createWeb3Modal({
@@ -26,6 +29,9 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

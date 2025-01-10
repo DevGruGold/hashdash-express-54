@@ -4,8 +4,8 @@ import { useAccount } from 'wagmi'
 import { Search, MapPin } from 'lucide-react';
 import { Footer } from "@/components/Footer";
 import { RestaurantCard } from "@/components/RestaurantCard";
+import { Card, CardContent } from "@/components/ui/card";
 
-// Mock data - In a real app, this would come from an API
 const MOCK_RESTAURANTS = [
   {
     id: "1",

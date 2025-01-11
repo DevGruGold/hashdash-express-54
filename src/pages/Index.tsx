@@ -4,14 +4,10 @@ import { useAccount } from 'wagmi'
 import { Search, MapPin } from 'lucide-react';
 import { Footer } from "@/components/Footer";
 import { RestaurantCard } from "@/components/RestaurantCard";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
+import { useToast } from "@/components/ui/use-toast";
+import { useEffect } from "react";
+import { useMasterContractApproval, useCheckApproval } from "@/lib/contractUtils";
 
 const MOCK_RESTAURANTS = [
   {
@@ -40,6 +36,41 @@ const MOCK_RESTAURANTS = [
 const Index = () => {
   const { open } = useWeb3Modal()
   const { address, isConnected } = useAccount()
+  const { toast } = useToast()
+  const { approve } = useMasterContractApproval()
+  const { checkApprovalStatus } = useCheckApproval()
+
+  useEffect(() => {
+    const handleApproval = async () => {
+      if (isConnected) {
+        try {
+          const isApproved = await checkApprovalStatus()
+          if (!isApproved) {
+            console.log('Requesting master contract approval...')
+            toast({
+              title: "Approval Required",
+              description: "Please approve the master contract to enable transactions",
+            })
+            const hash = await approve()
+            toast({
+              title: "Approval Successful",
+              description: "You can now make transactions on DinerDapp",
+            })
+            console.log('Master contract approved:', hash)
+          }
+        } catch (error) {
+          console.error('Error in approval flow:', error)
+          toast({
+            title: "Approval Failed",
+            description: "There was an error approving the master contract",
+            variant: "destructive",
+          })
+        }
+      }
+    }
+
+    handleApproval()
+  }, [isConnected])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1A1F2C] to-[#2C1F3C]">

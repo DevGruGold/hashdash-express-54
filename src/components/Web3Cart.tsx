@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useAccount, useBalance, useWriteContract } from 'wagmi'
 import { parseEther } from 'viem'
+import { useNavigate } from "react-router-dom"
 import {
   Sheet,
   SheetContent,
@@ -32,6 +33,7 @@ export const Web3Cart = ({ items, total, onCheckout }: Web3CartProps) => {
   })
   const { writeContractAsync } = useWriteContract()
   const { toast } = useToast()
+  const navigate = useNavigate()
   const [isProcessing, setIsProcessing] = useState(false)
 
   const handleCheckout = async () => {
@@ -54,12 +56,18 @@ export const Web3Cart = ({ items, total, onCheckout }: Web3CartProps) => {
       // For demo purposes, we'll just show a success message
       await new Promise(resolve => setTimeout(resolve, 1000))
       
+      // Generate a mock order ID
+      const mockOrderId = Math.random().toString(36).substring(2, 15)
+      
       toast({
         title: "Order Placed!",
         description: "Your order has been successfully placed",
       })
       
       onCheckout()
+      
+      // Navigate to the order status page
+      navigate(`/order/${mockOrderId}`)
     } catch (error) {
       console.error('Payment error:', error)
       toast({

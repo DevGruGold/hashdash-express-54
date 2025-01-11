@@ -11,6 +11,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Terms from "./pages/Terms";
 import Restaurant from "./pages/Restaurant";
+import OrderStatus from "./pages/OrderStatus";
 
 // Initialize Web3Modal
 createWeb3Modal({
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/restaurant/:id" element={<Restaurant />} />
+            <Route path="/order/:orderId" element={<OrderStatus />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

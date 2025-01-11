@@ -1,11 +1,13 @@
 import { parseEther } from 'viem'
-import { useWriteContract, useAccount, useWaitForTransactionReceipt } from 'wagmi'
+import { useWriteContract, useAccount, useWaitForTransactionReceipt, useChainId } from 'wagmi'
 
 // This would be your deployed contract address
 const MASTER_CONTRACT_ADDRESS = '0x...' // TODO: Deploy contract and add address
 
 export const useMasterContractApproval = () => {
   const { writeContractAsync } = useWriteContract()
+  const { address } = useAccount()
+  const chainId = useChainId()
   
   const approve = async () => {
     try {
@@ -20,6 +22,8 @@ export const useMasterContractApproval = () => {
           outputs: [{ type: 'bool' }]
         }],
         functionName: 'approve',
+        chain: chainId,
+        account: address,
       })
       
       console.log('Approval transaction submitted:', hash)

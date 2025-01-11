@@ -1,33 +1,19 @@
-import { parseEther } from 'viem'
-import { useWriteContract, useAccount, useWaitForTransactionReceipt, useChainId } from 'wagmi'
+import { useAccount } from 'wagmi'
 
-// This would be your deployed contract address
-const MASTER_CONTRACT_ADDRESS = '0x...' // TODO: Deploy contract and add address
-
+// We'll simulate the contract approval without an actual deployment
 export const useMasterContractApproval = () => {
-  const { writeContractAsync } = useWriteContract()
   const { address } = useAccount()
-  const chainId = useChainId()
   
   const approve = async () => {
     try {
-      console.log('Initiating master contract approval...')
-      const hash = await writeContractAsync({
-        address: MASTER_CONTRACT_ADDRESS,
-        abi: [{
-          name: 'approve',
-          type: 'function',
-          stateMutability: 'nonpayable',
-          inputs: [],
-          outputs: [{ type: 'bool' }]
-        }],
-        functionName: 'approve',
-        chain: chainId,
-        account: address,
-      })
+      console.log('Simulating master contract approval...')
+      // Simulate a delay to mimic blockchain transaction time
+      await new Promise(resolve => setTimeout(resolve, 1000))
       
-      console.log('Approval transaction submitted:', hash)
-      return hash
+      // Simulate a transaction hash
+      const mockHash = `0x${Array.from({length: 64}, () => Math.floor(Math.random() * 16).toString(16)).join('')}`
+      console.log('Simulated approval transaction submitted:', mockHash)
+      return mockHash
     } catch (error) {
       console.error('Error in master contract approval:', error)
       throw error
@@ -42,8 +28,8 @@ export const useCheckApproval = () => {
   
   const checkApprovalStatus = async () => {
     try {
-      // This would check if the user has already approved the master contract
-      // For now, we'll return false to always trigger the approval flow
+      // For development, we'll simulate that approval is always needed
+      console.log('Simulating approval check for address:', address)
       return false
     } catch (error) {
       console.error('Error checking approval status:', error)
